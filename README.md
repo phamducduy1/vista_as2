@@ -22,8 +22,19 @@ Located in the `instruction` folder
 
 ```bash
 git init
-git pull git@github.com:phamducduy1/vista_as2.git
+git remote add origin git@github.com:phamducduy1/vista_as2.git
+git pull origin main
 ```
+**Note**: Always pull the latest version from the main branch before making any changes.
+- always create a new branch for any changes you make
+- make a pull request to merge your changes to the main branch by:
+```bash
+git checkout -b your-branch-name
+# make your changes
+git add .
+git commit -m "Your commit message"
+git push origin your-branch-name
+# Go to GitHub and create a pull request
 
 ### Set up Pyenv
 
