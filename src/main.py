@@ -14,6 +14,6 @@ def run_scripts_in_order(scripts):
 if __name__ == "__main__":
     scripts_to_run = [
         'models.py', 
-        'preprocessing.py',
+        'preprocess.py',
     ]
     run_scripts_in_order(scripts_to_run)
