@@ -1,4 +1,3 @@
-import os
 import importlib
 
 def run_scripts_in_order(scripts):
@@ -13,10 +12,8 @@ def run_scripts_in_order(scripts):
                 print(f"No main() function found in {script}")
 
 if __name__ == "__main__":
-    # List of scripts to run in order
     scripts_to_run = [
+        'models.py', 
         'preprocessing.py',
-        'learning.py'
-        # Add more scripts here as needed
     ]
     run_scripts_in_order(scripts_to_run)
