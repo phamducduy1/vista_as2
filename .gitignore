@@ -1,4 +1,28 @@
+# OS / editors
+.DS_Store
+.vscode/
+.idea/
+*.code-workspace
+
+# Python
 __pycache__/
-*.pyc
-data/processed_data/*.csv
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg-info/
+.eggs/
+dist/
+build/
+.venv/
+venv/
+.env
+.ipynb_checkpoints/
+
+# Project data & outputs
+data/**/*.csv
+data/**/*.parquet
+data/**/*.xlsx
 figs/
+outputs/
+logs/
