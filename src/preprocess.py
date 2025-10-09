@@ -510,11 +510,23 @@ class Preprocess:
             )
 
             # Categorised by journey distance and clean data
-            # there are some negatve values in journey_to_work data. set to 0
+            # there are some negatve values in journey_to_work data.
+            # impute these data based on mean speed and time traveled
             journey["jdist"] = pd.to_numeric(
                 journey["journey_distance"], errors="coerce"
             )
-            journey["jdist"] = journey["jdist"].apply(lambda x: 0 if x < 0 else x)
+            mode_speed = journey[journey['journey_distance'].notna()].groupby('main_journey_mode').apply(
+                lambda x: (x['jdist'] / x['journey_travel_time'] * 60).median()
+            )
+
+            for idx in journey[journey['jdist'].isna()].index:
+                mode = journey.loc[idx, 'main_journey_mode']
+                time = journey.loc[idx, 'journey_trvel_time']
+                time_numeric = pd.to_numeric(time, errors='coerce')
+                if mode in mode_speed and pd.notna(time_numeric) and time_numeric > 0:
+                    journey.loc[idx, 'jdist'] = (mode_speed[mode] * time_numeric) / 60
+        
+
 
             journey["journey_distance_category"] = pd.cut(
                 journey["jdist"],

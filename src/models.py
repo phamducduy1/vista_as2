@@ -448,5 +448,5 @@ class DataManager:
 def main():
     data_manager = DataManager()
     households = data_manager.households
-    unique_income_values = data_manager.get_unique_values('journey_education', 'journey_distance')
+    unique_income_values = data_manager.get_unique_values('journey_work', 'journey_distance')
     print(unique_income_values)
