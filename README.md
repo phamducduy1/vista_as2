@@ -15,56 +15,19 @@ Located in the `instruction` folder
 Located in the 'instruction' folder
 
 ### Overview
-#### models.py
+#### src/models.py file
 This file contains the model which is designed for data manipulation and analysis.
-#### preprocess.py
+#### src/preprocess.py file
 This file contains functions for data cleaning and preprocessing.
+#### src/analysis folder
+This folder contains the main correlation analysis code.
+#### src/dataClustering.py file
+This file contains the code for data clustering and profiling.
+#### notebooks folder
+This folder contains Jupyter notebooks for supervised learning tasks.
 
-*** Preprocessing steps include:
-1. Handling missing values: 
-- Mean imputation for numerical columns: `household_income`, `personal_income`
-- Median imputation for numerical columns with outliers (``cumdist``)
-- Zero filling:
-    - Person with zero trips in `total_trips`
-    - wfh days for non-working individuals
-2. Reshaping Data
-- Aggregation: 
-    - Person-level trip summaries from trip-level data
-    - Household-level summaries from person and trip-level data
-3. Scaling
-- Calculated ratios instead of using normalisation/standardisation
-4. Encoding Categorical Variables
-- Binary Encoding: 
-    - wfh days: 'yes'/'no' to 1/0
-    - indicators such as `is_peak_hour`, `is_city`, ... to 1/0
-- Label encoding: Transforming numerical categories into categorical
-- Ordinal Encoding: 
-    - Income percentiles, Vehicle availability
-5. Discretization (Binning)
-- Age groups: Categorizing ages from 5-years intervals to 10-years intervals
-- Time of day: Early Morning to Night with 7 categories
-- journey complexity: Based on number of stops per journey
-- Income brackets, Distance Categories, Duration Categories, WFH categories, household Size categories into custom bins.
-- quantile-based binning for `personal_income`
-6. Merging Datasets
-- Merge using keys (`persid`, `hhid`, `tripid`) to create a comprehensive dataset for analysis.
-- Aggregated merges: trip summaries to person-level, person summaries to household-level.
-- Selective merged: Merges only relevant columns for analysis.
-7. Feature Engineering
-- Composite Features:
-    - total wfh days
-    - household indicators: `has_young_children`, `has_teenagers`
-- Derived Metrics:
-    - average trip distance and duration
-    - `vehicle_per_person` 
-- Categorical Features:
-    - Employment status categories
-    - lifestage categories
-    - purpose categories
-    - mode categories
-    - Zone categories
-8. Outlier Detection and Treatment
-- Handling non-sensical values: 
-    - Negative distances are set to 0
-9. Type Conversion
-- Ensuring correct data types for analysis:
+## To run the code, firstly you need to install the required packages
+## Run `main.py` inside of the `src/` folder. 
+*** or run
+```
+python src/main.py
